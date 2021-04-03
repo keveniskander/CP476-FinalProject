@@ -19,43 +19,10 @@ app = Flask(__name__)
 if __name__ == '__main__':
     app.run(debug=True)
 
-@app.route("/<name>")
-def index(name):
-    st = time.time()
-    sud = Sudoku()
 
-    print("BEFORE: ")
-    sud.print_table()
-    print()
-
-    print("AFTER AC3: ")
-    constraints=sud.constraints()
-    sud.AC3(constraints)
-    # print("Is solvable using AC3: ", val)
-    sud.AC3_table()
-    sud.print_table()
-    print()
-    flag=True
-    for i in range (len(sud.table)):
-        for j in range(len(sud.table)):
-            if (sud.table[i][j].value==0):
-                flag=False
-                break
-
-    if(flag==True):
-        print("The AC-3 algorithm was able to solve the Sudoku Puzzle")
-    else:
-        print("The AC-3 algorithm was NOT able to fully solve the Sudoku Puzzle")
-        print()
-        print("backtracking will solve the Sudoku")
-        print()
-        print("AFTER BACKTRACKING: ")
-        sud.backtracking()
-        sud.print_table()
-
-    print("Total Execution Time: %s seconds" % (time.time()-st))
-    # return "<h1>Hello {}!</h1>".format(name)
-    return sud.table
+@app.route("/")
+def index():
+    return render_template("sudoku.html")
     
 
 
