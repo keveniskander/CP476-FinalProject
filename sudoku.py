@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
 @app.route("/")
 def index():
+    #main render
     return render_template("sudoku.html")
     
 
