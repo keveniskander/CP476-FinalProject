@@ -21,9 +21,44 @@ if __name__ == '__main__':
 
 @app.route("/<name>")
 def index(name):
-    return "<h1>Hello {}!</h1>".format(name)
+    st = time.time()
+    sud = Sudoku()
 
+    print("BEFORE: ")
+    sud.print_table()
+    print()
+
+    print("AFTER AC3: ")
+    constraints=sud.constraints()
+    sud.AC3(constraints)
+    # print("Is solvable using AC3: ", val)
+    sud.AC3_table()
+    sud.print_table()
+    print()
+    flag=True
+    for i in range (len(sud.table)):
+        for j in range(len(sud.table)):
+            if (sud.table[i][j].value==0):
+                flag=False
+                break
+
+    if(flag==True):
+        print("The AC-3 algorithm was able to solve the Sudoku Puzzle")
+    else:
+        print("The AC-3 algorithm was NOT able to fully solve the Sudoku Puzzle")
+        print()
+        print("backtracking will solve the Sudoku")
+        print()
+        print("AFTER BACKTRACKING: ")
+        sud.backtracking()
+        sud.print_table()
+
+    print("Total Execution Time: %s seconds" % (time.time()-st))
+    # return "<h1>Hello {}!</h1>".format(name)
+    return sud.table
     
+
+
 # Some Sudoku puzzle challenges taken from here:
 # https://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
 
@@ -48,37 +83,6 @@ class Node:
 
 
 class Sudoku:
-    # def __init__(self):
-    #     """
-    #     -------------------------------------------------------
-    #     Populates sodoku puzzle
-    #     Parameters: self - Matrix
-    #     Return: None
-    #     -------------------------------------------------------
-    #     """
-    #     self.lvalues = []
-    #     f = open('sudoku7.txt', 'r')
-    #     lines = f.readlines()
-    #     if len(lines)!=9:
-    #         print('ERROR: Invalid puzzle file')
-    #         self.table = [[Node(0) for i in range(9)] for j in range(9)]
-    #     else:
-    #         self.table = [[0 for i in range(9)] for j in range(9)]
-    #         for i in range(len(self.table)):
-    #             for j in range(len(self.table)):
-    #                 self.lvalues.append(int(lines[i][j]))
-    #                 self.table[i][j] = Node(int(lines[i][j]))
-    #                 self.table[i][j].row=i
-    #                 self.table[i][j].col=j
-    #                 if self.table[i][j].value !=0: 
-    #                     self.table[i][j].domain = [self.table[i][j].value]
-    #         for k in range(len(self.table)):
-    #             for l in range(len(self.table)):
-    #                 if self.table[k][l].value == 0: self.table[k][l].domain = self.update_domain(k,l)
-    #     f.close()
-    #     return
-
-
     def __init__(self):
         """
         -------------------------------------------------------
@@ -87,15 +91,46 @@ class Sudoku:
         Return: None
         -------------------------------------------------------
         """
-
         self.lvalues = []
-        # Get data from fields
-        # cells = request.form.getlist("cells[]")
-        cells = request.form.getlist("cells[]", type=int)
-        self.lvalues = cells
+        f = open('sudoku7.txt', 'r')
+        lines = f.readlines()
+        if len(lines)!=9:
+            print('ERROR: Invalid puzzle file')
+            self.table = [[Node(0) for i in range(9)] for j in range(9)]
+        else:
+            self.table = [[0 for i in range(9)] for j in range(9)]
+            for i in range(len(self.table)):
+                for j in range(len(self.table)):
+                    self.lvalues.append(int(lines[i][j]))
+                    self.table[i][j] = Node(int(lines[i][j]))
+                    self.table[i][j].row=i
+                    self.table[i][j].col=j
+                    if self.table[i][j].value !=0: 
+                        self.table[i][j].domain = [self.table[i][j].value]
+            for k in range(len(self.table)):
+                for l in range(len(self.table)):
+                    if self.table[k][l].value == 0: self.table[k][l].domain = self.update_domain(k,l)
+        f.close()
+        return
 
 
-        return 
+    # def __init__(self):
+    #     """
+    #     -------------------------------------------------------
+    #     Populates sodoku puzzle
+    #     Parameters: self - Matrix
+    #     Return: None
+    #     -------------------------------------------------------
+    #     """
+
+    #     self.lvalues = []
+    #     # Get data from fields
+    #     # cells = request.form.getlist("cells[]")
+    #     cells = request.form.getlist("cells[]", type=int)
+    #     self.lvalues = cells
+
+
+    #     return 
 
 
     def print_table(self):
