@@ -14,6 +14,16 @@ import time
 import cgi
 import cgitb
 from flask import Flask, render_template, request
+
+app = Flask(__name__)
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route("/<name>")
+def index(name):
+    return "<h1>Hello {}!</h1>".format(name)
+
+    
 # Some Sudoku puzzle challenges taken from here:
 # https://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
 
@@ -80,7 +90,9 @@ class Sudoku:
 
         self.lvalues = []
         # Get data from fields
-        cells = request.form.getlist("cells[]")
+        # cells = request.form.getlist("cells[]")
+        cells = request.form.getlist("cells[]", type=int)
+        self.lvalues = cells
 
 
         return 
