@@ -25,7 +25,12 @@ def index():
     #main render
     print('index test')
     return render_template("sudoku.html")
-    
+
+@app.route("/b",methods=["GET"])
+def process():
+
+    return "dsfdsfs"
+ 
 
 
 # Some Sudoku puzzle challenges taken from here:
