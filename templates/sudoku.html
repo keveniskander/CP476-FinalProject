@@ -5,7 +5,8 @@
 </head>
 
 <body>
-    <p>hello world!</p>
+</div>
+<h2 style="align-self:center; width: 400px; margin:1em auto;">Welcome to Sudoku Puzzle Solver!</h2>
 
 <table>
     <tr>
@@ -128,14 +129,133 @@
 
   
     </table>
+</div>
+    <div style="align-self:center; width: 300px; margin:1em auto;">
+        <input type="button" value="Solve Puzzle" onclick="checkNum()" >
+        <input type="button" value="Random Puzzle" >
+        <input type="button" value="test button" onclick="callAPI()" >
+        <p id="me">knjknkj</p>
+    
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">    </script>
 
-    </tr>
-    </table>
-    <div>Select Difficulty</div>
-    <tr><button type='button' onclick="easy()">Easy</button>
-        <button type='button' onclick="medium()">Medium</button>
-        <button type='button' onclick="hard()">Hard</button>
-    </tr>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    $('.cell').keypress(function (e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            var index = $('.cell').index(this) + 1;
+            $('.cell').eq(index).focus();
+        }
+ 
+
+    });
+ 
+
+    
+
+    });
+    function checkNum(){
+
+
+        var cellElements = document.querySelectorAll('.cell');
+        console.log(cellElements.length)
+        // Set their ids
+        for (var i = 0; i < cellElements.length; i++){
+            cellElements[i].id = 'cell_' + i;
+            // console.log(cellElements[i].id)
+            
+        }
+        var arr=[];
+        var err=false;
+        for (var i=0;i<81;i++){
+            var x=document.getElementById("cell_"+i);
+            // var row=Math.floor(i/9);
+            // console.log("row:",row,"col:",col);
+            // var col=i%9;
+            // console.log(x.value)
+            if ( x.value!= "" && isNaN(x.value) ){
+            
+                
+                err=true;
+                console.log("this is not a number");
+                x.value="";
+                
+            }
+            else if (x.value==""){
+                arr.push(0);
+            }
+            else if(x.value!="" && !isNaN(x.value)){
+                arr.push(x.value);
+
+
+            }
+
+        }
+        if (err==true){
+            alert("inputs must be a single digit number");
+
+        }
+        else{
+            
+        console.log("array:");
+
+        for (var i=0;i<arr.length;i++){
+            console.log(arr[i])
+  
+        }
+
+        }
+
+        
+    }
+
+        function callAPI(){
+            var stuff=document.getElementById('me');
+            stuff.innerHTML="";
+
+            var apiUrl = 'http://127.0.0.1:5000/b';
+            fetch(apiUrl).then(response => {
+            return response.json();
+            
+            }).then(data => {
+            // Work with JSON data here
+            
+            // stuff.innerHTML=JSON.stringify(data);
+            stuff.innerHTML=data.name;
+            // var json=data;
+
+            // for(var i = 0; i < json.length; i++) {
+            //     var obj = json[i];
+
+            //     stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.message + '</p>'
+            // }
+
+            }).catch(err => {
+                console.log(err)
+
+
+            });
+
+        }
+        function Callfetch(){
+            fetch("http://localhost:9000/mortgage_api/"+this.state.loan+"/"+this.state.rate+"/"+this.state.period)
+            .then(res => res.text())
+            .then(res =>{
+                var obj=JSON.parse(res);
+                this.setState({apiResponse: obj.message.toFixed(2)})
+            }
+                )
+            .catch(err => err)
+
+
+        }
+ 
+  
+
+    </script>
+
 
 </body>
 
