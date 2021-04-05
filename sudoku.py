@@ -57,54 +57,40 @@ class Node:
 
 
 class Sudoku:
-    def __init__(self):
+
+    def __init__(self, input):
         """
         -------------------------------------------------------
         Populates sodoku puzzle
         Parameters: self - Matrix
+                    input - array of values passed from HTTP POST request
         Return: None
         -------------------------------------------------------
         """
-        self.lvalues = []
-        f = open('sudoku7.txt', 'r')
-        lines = f.readlines()
-        if len(lines)!=9:
+
+        self.lvalues = input
+        if len(input)!=81:
             print('ERROR: Invalid puzzle file')
             self.table = [[Node(0) for i in range(9)] for j in range(9)]
+            self.print_table()
         else:
-            self.table = [[0 for i in range(9)] for j in range(9)]
+            self.table = [[Node(0) for i in range(9)] for j in range(9)]
+            counter = 0
             for i in range(len(self.table)):
                 for j in range(len(self.table)):
-                    self.lvalues.append(int(lines[i][j]))
-                    self.table[i][j] = Node(int(lines[i][j]))
+                    # self.lvalues.append(int(lines[i][j]))
+                    self.table[i][j] = Node(int(self.lvalues[counter]))
                     self.table[i][j].row=i
                     self.table[i][j].col=j
                     if self.table[i][j].value !=0: 
                         self.table[i][j].domain = [self.table[i][j].value]
+                    counter+=1
             for k in range(len(self.table)):
                 for l in range(len(self.table)):
                     if self.table[k][l].value == 0: self.table[k][l].domain = self.update_domain(k,l)
-        f.close()
-        return
 
 
-    # def __init__(self):
-    #     """
-    #     -------------------------------------------------------
-    #     Populates sodoku puzzle
-    #     Parameters: self - Matrix
-    #     Return: None
-    #     -------------------------------------------------------
-    #     """
-
-    #     self.lvalues = []
-    #     # Get data from fields
-    #     # cells = request.form.getlist("cells[]")
-    #     cells = request.form.getlist("cells[]", type=int)
-    #     self.lvalues = cells
-
-
-    #     return 
+        return 
 
 
     def print_table(self):
@@ -472,7 +458,7 @@ class Sudoku:
 
 def main():
     st = time.time()
-    sud = Sudoku()
+    sud = Sudoku(input = [0,0,3,0,2,0,6,0,0,9,0,0,3,0,5,0,0,1,0,0,1,8,0,6,4,0,0,0,0,8,1,0,2,9,0,0,7,0,0,0,0,0,0,0,8,0,0,6,7,0,8,2,0,0,0,0,2,6,0,9,5,0,0,8,0,0,2,0,3,0,0,9,0,0,5,0,1,0,3,0,0])
 
     print("BEFORE: ")
     sud.print_table()
