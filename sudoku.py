@@ -26,10 +26,16 @@ def index():
     print('index test')
     return render_template("sudoku.html")
 
-@app.route("/b",methods=["GET"])
-def process():
+@app.route("/b/<index_arr>",methods=["GET","POST"])
+def process(index_arr):
 
-    return "dsfdsfs"
+    if request.method == 'POST': # POST request
+        print(request.get_text())  # parse as text
+        return 'OK', 200
+    else:
+        print("gdsdf")
+        
+        return index_arr
  
 
 

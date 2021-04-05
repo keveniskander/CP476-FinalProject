@@ -207,14 +207,18 @@
 
         }
 
+        return arr;
         
     }
 
         function callAPI(){
             var stuff=document.getElementById('me');
             stuff.innerHTML="";
-
-            var apiUrl = 'http://127.0.0.1:5000/b';
+            // var arr=[3,3,3,3];
+            var arr=checkNum();
+            
+  
+            var apiUrl = 'http://127.0.0.1:5000/b/'+arr;
             fetch(apiUrl).then(response => {
             return response.text();
             
