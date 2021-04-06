@@ -1,12 +1,18 @@
 """
 -------------------------------------------------------
 sudoku.py
-9x9 Sudoku Puzzle implementation as described in class
+9x9 Sudoku Puzzle implementation generator & solver
 -------------------------------------------------------
-CP468
-Assignment 2
-Authors:  Keven Iskander, Carla Castaneda, Nicole Laslavic, Alexander Francis
-__updated__ = "2020-11-09"
+CP476
+Final Project
+Authors:  Keven Iskander, Carla Castaneda, Nicole Laslavic
+
+Source: This code was originally written for CP468 - 
+Artificial Intelligence, but was revised and rewritten 
+for the purpose of this course.
+The Original Authors are Keven Iskander, Carla Castaneda,
+Nicole Laslavic and Alexander Francis
+__updated__ = "2021-04-10"
 -------------------------------------------------------
 """
 import utilities
@@ -17,28 +23,6 @@ import cgi
 import cgitb
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-@app.route("/")
-def index():
-    #main render
-    print('index test')
-    return render_template("sudoku.html")
-
-@app.route("/b/<index_arr>",methods=["GET","POST"])
-def process(index_arr):
-
-    if request.method == 'POST': # POST request
-        print(request.get_text())  # parse as text
-        return 'OK', 200
-    else:
-        print("gdsdf")
-        
-        return index_arr
- 
 
 
 # Some Sudoku puzzle challenges taken from here:
@@ -484,6 +468,13 @@ class Sudoku:
             j = random.randint(0,8)
             self.table[i][j].value = 0
         return
+
+    def convert(self):
+        s = ''
+        for i in range(9):
+            for j in range(9):
+                s+=str(self.table[i][j].value)
+        return s
     
     
 def shift(seq, n):
@@ -520,50 +511,92 @@ def generateBoard():
         j+=1
     return board
 
-def main():
-    #Generates random board
-    board = generateBoard()
-    sud = Sudoku(board)
+# def main():
+#     #Generates random board
+#     board = generateBoard()
+#     sud = Sudoku(board)
     
-    sud.backtracking()
-    sud.print_table()
-    print("Randomly generated puzzle")
-    sud.hard()
-    sud.print_table()
-    #done generating
+#     sud.backtracking()
+#     sud.print_table()
+#     # print("Randomly generated puzzle")
+#     sud.hard()
+#     # sud.print_table()
+#     #done generating
     
-    st = time.time()
+#     st = time.time()
     
-    print("BEFORE: ")
-    sud.print_table()
-    print()
+#     print("BEFORE: ")
+#     sud.print_table()
+#     print()
 
-    print("AFTER AC3: ")
-    constraints=sud.constraints()
-    sud.AC3(constraints)
-    # print("Is solvable using AC3: ", val)
-    sud.AC3_table()
-    sud.print_table()
-    print()
-    flag=True
-    for i in range (len(sud.table)):
-        for j in range(len(sud.table)):
-            if (sud.table[i][j].value==0):
-                flag=False
-                break
+#     print("AFTER AC3: ")
+#     constraints=sud.constraints()
+#     sud.AC3(constraints)
+#     # print("Is solvable using AC3: ", val)
+#     sud.AC3_table()
+#     sud.print_table()
+#     print()
+#     flag=True
+#     for i in range (len(sud.table)):
+#         for j in range(len(sud.table)):
+#             if (sud.table[i][j].value==0):
+#                 flag=False
+#                 break
 
-    if(flag==True):
-        print("The AC-3 algorithm was able to solve the Sudoku Puzzle")
+#     if(flag==True):
+#         print("The AC-3 algorithm was able to solve the Sudoku Puzzle")
+#     else:
+#         print("The AC-3 algorithm was NOT able to fully solve the Sudoku Puzzle")
+#         print()
+#         print("backtracking will solve the Sudoku")
+#         print()
+#         print("AFTER BACKTRACKING: ")
+#         sud.backtracking()
+#         sud.print_table()
+
+#     print("Total Execution Time: %s seconds" % (time.time()-st))
+
+# if __name__ == "__main__":
+#     main()
+
+
+board = generateBoard()
+sud = Sudoku(board)
+    
+sud.backtracking()
+sud.print_table()
+# print("Randomly generated puzzle")
+sud.hard()
+sud.print_table()
+sud_string = sud.convert()
+# print(sud.convert())
+app = Flask(__name__)
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route("/")
+def index():
+    #main render
+    print('index test')
+    return render_template("sudoku.html")
+
+@app.route("/b/<index_arr>",methods=["GET","POST"])
+def process(index_arr):
+
+    if request.method == 'POST': # POST request
+        print(request.get_text())  # parse as text
+        return 'OK', 200
     else:
-        print("The AC-3 algorithm was NOT able to fully solve the Sudoku Puzzle")
-        print()
-        print("backtracking will solve the Sudoku")
-        print()
-        print("AFTER BACKTRACKING: ")
-        sud.backtracking()
-        sud.print_table()
+        print("gdsdf")
+        
+        return index_arr
 
-    print("Total Execution Time: %s seconds" % (time.time()-st))
 
-if __name__ == "__main__":
-    main()
+
+@app.route("/c/",methods=["GET"])
+def random():
+    # if __name__ == "__main__":
+    #     main()
+    app.run(debug=True)
+    r = sud_string
+    return r
