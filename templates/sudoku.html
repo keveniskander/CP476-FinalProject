@@ -141,75 +141,190 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-    $('.cell').keypress(function (e) {
-        if (e.which === 13) {
-            e.preventDefault();
-            var index = $('.cell').index(this) + 1;
-            $('.cell').eq(index).focus();
-        }
- 
+$('.cell').keypress(function (e) {
+    if (e.which === 13) {
+        e.preventDefault();
+        var index = $('.cell').index(this) + 1;
+        $('.cell').eq(index).focus();
+    }
 
-    });
- 
 
+});
+
+$(".cell").on('input', function(){
+    var id=$(this).attr('id');
+    var x=document.getElementById(id).value;
+
+    if (x==""){
+        document.getElementById(id).style.backgroundColor="rgb(255, 255, 255)";
+
+    }
     
 
-    });
-    function checkNum(){
+    if (isNaN(x)){
+        document.getElementById(id).value = "";
+        alert("input"+parseInt(id)+ " is not a number");
+        
+
+    }
+    var row=Math.floor(parseInt(id)/9)*9;
 
 
-        var cellElements = document.querySelectorAll('.cell');
-        console.log(cellElements.length)
-        // Set their ids
-        for (var i = 0; i < cellElements.length; i++){
-            cellElements[i].id = 'cell_' + i;
-            // console.log(cellElements[i].id)
-            
-        }
-        var arr=[];
-        var err=false;
-        for (var i=0;i<81;i++){
-            var x=document.getElementById("cell_"+i);
-            // var row=Math.floor(i/9);
-            // console.log("row:",row,"col:",col);
-            // var col=i%9;
-            // console.log(x.value)
-            if ( x.value!= "" && isNaN(x.value) ){
-            
-                
-                err=true;
-                console.log("this is not a number");
-                x.value="";
-                
-            }
-            else if (x.value==""){
-                arr.push(0);
-            }
-            else if(x.value!="" && !isNaN(x.value)){
-                arr.push(x.value);
-
-
-            }
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    
+    for (var i = row; i < row+9; i++){
+        if (i!=parseInt(id) && cellElements[i].value!=""  && cellElements[i].value==x){
+            document.getElementById(id).style.backgroundColor="rgb(248, 11, 11)";
 
         }
-        if (err==true){
-            alert("inputs must be a single digit number");
-
-        }
-        else{
-            
-        console.log("array:");
-
-        for (var i=0;i<arr.length;i++){
-            console.log(arr[i])
-  
-        }
-
-        }
-
-        return arr;
         
     }
+    var col=parseInt(id)%9;
+
+    var i=col;
+
+    while (i < 81) {
+        if (i!=parseInt(id) && cellElements[i].value!="" && cellElements[i].value==x){
+            document.getElementById(id).style.backgroundColor="rgb(248, 11, 11)";
+
+        }
+      i+=9;
+    }
+    //for subsquares
+
+
+  
+    var subsquare_index= Math.floor((parseInt(id)%9)/3)+3*(Math.floor(parseInt(id)/(9*3)))
+    console.log("subsquareindex: "+subsquare_index);
+
+    var inner_index;
+
+
+    switch(subsquare_index) {
+    case 0:
+        inner_index = 0;
+        break;
+    case 1:
+        inner_index = 3;
+        break;
+    case 2:
+        inner_index = 6;
+        break;
+    case 3:
+        inner_index = 27;
+        break;
+    case 4:
+        inner_index = 30;
+        break;
+    case 5:
+        inner_index = 33;
+        break;
+
+    case 6:
+        inner_index = 54;
+        break;
+    case 7:
+        inner_index =57;
+        break;
+    case 8:
+        inner_index =60;
+        break;
+    default:
+        inner_index =0;
+    }
+
+    var i=inner_index;
+    var col=0
+
+    while(i<inner_index+21){
+        if (i!=parseInt(id) && cellElements[i].value!="" && cellElements[i].value==x){
+            document.getElementById(id).style.backgroundColor="rgb(248, 11, 11)";
+
+        }
+
+        col++;
+
+        if (col==3){
+            col=0;
+            i+=6;
+        }
+
+
+        i++;
+
+    }
+
+
+
+
+
+
+
+});
+
+window.onload = function WindowLoad(event) {
+
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        cellElements[i].id =  i;
+        
+    }
+}
+
+
+});
+function checkNum(){
+
+
+var arr=[];
+var err=false;
+for (var i=0;i<81;i++){
+    var x=document.getElementById(i);
+    var colour=document.getElementById(i).style.backgroundColor
+
+
+    if ( x.value!= "" && colour=="rgb(248, 11, 11)" ){
+    
+        
+        err=true;
+        console.log("Incorrect input, cannot submit");
+        x.value="";
+        document.getElementById(i).style.backgroundColor="rgb(255, 255, 255)";
+        
+    }
+    else if (x.value==""){
+        arr.push(0);
+    }
+    else if(x.value!="" && !isNaN(x.value)){
+        arr.push(x.value);
+
+
+    }
+
+}
+if (err==true){
+    alert("Incorrect input, cannot submit");
+    
+
+}
+else{
+    
+console.log("array:");
+
+for (var i=0;i<arr.length;i++){
+    console.log(arr[i])
+
+}
+
+}
+
+return arr;
+
+}
 
         function callAPI(){
             var stuff=document.getElementById('me');
