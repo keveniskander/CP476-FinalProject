@@ -10,6 +10,8 @@ __updated__ = "2020-11-09"
 -------------------------------------------------------
 """
 import utilities
+import random
+import collections
 import time
 import cgi
 import cgitb
@@ -460,12 +462,78 @@ class Sudoku:
                     value = self.table[i][j].domain[0]
                     self.table[i][j].value = value
         return
+    
+    def easy(self):
+        #take 20 values out
+        for _ in range(0,20):
+            i = random.randint(0,8)
+            j = random.randint(0,8)
+            self.table[i][j].value = 0
+        return
 
+    def medium(self):
+        for _ in range(0,40):
+            i = random.randint(0,8)
+            j = random.randint(0,8)
+            self.table[i][j].value = 0
+        return
+
+    def hard(self):
+        for _ in range(0,60):
+            i = random.randint(0,8)
+            j = random.randint(0,8)
+            self.table[i][j].value = 0
+        return
+    
+    
+def shift(seq, n):
+    n = n % len(seq)
+    shifted = seq[n:] + seq[:n]
+    return shifted
+
+def generateBoard():
+    board = []
+    nums = [1,2,3,4,5,6,7,8,9]
+    random.shuffle(nums)
+    
+    num2 = shift(nums, 3)
+    for i in range(0, 9):
+        nums.append(num2[i])
+
+    num3 = shift(num2, 3)
+    for i in range(0, 9):
+        nums.append(num3[i])
+
+    for _ in range(0, 81):
+        board.append(0)
+
+    choose = [0, 9, 18, 27, 36, 45, 54, 63, 72]
+    j = 0
+    n = 0
+    while j < 3:
+        i = random.choice(choose)
+        choose.remove(i)
+        for _ in range(0, 9):
+            board[i] = nums[n]
+            n+=1
+            i+=1
+        j+=1
+    return board
 
 def main():
+    #Generates random board
+    board = generateBoard()
+    sud = Sudoku(board)
+    
+    sud.backtracking()
+    sud.print_table()
+    print("Randomly generated puzzle")
+    sud.hard()
+    sud.print_table()
+    #done generating
+    
     st = time.time()
-    sud = Sudoku(input = [0,0,3,0,2,0,6,0,0,9,0,0,3,0,5,0,0,1,0,0,1,8,0,6,4,0,0,0,0,8,1,0,2,9,0,0,7,0,0,0,0,0,0,0,8,0,0,6,7,0,8,2,0,0,0,0,2,6,0,9,5,0,0,8,0,0,2,0,3,0,0,9,0,0,5,0,1,0,3,0,0])
-
+    
     print("BEFORE: ")
     sud.print_table()
     print()
