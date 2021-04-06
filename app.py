@@ -18,9 +18,30 @@ def process(index_arr):
         print(request.get_text())  # parse as text
         return 'OK', 200
     else:
-        print("gdsdf")
-        
-        return index_arr
+        # print("Error: Keven's Error")
+        puzzle_arr = []
+    
+        index_arr = index_arr.replace(",","")
+        for i in range(len(index_arr)):
+            puzzle_arr.append(int(index_arr[i]))
+        # print("puzzle array:", puzzle_arr)
+        sud = Sudoku(puzzle_arr)
+        constraints=sud.constraints()
+        sud.AC3(constraints)
+        sud.AC3_table()
+        flag=True
+        for i in range (len(sud.table)):
+            for j in range(len(sud.table)):
+                if (sud.table[i][j].value==0):
+                    flag=False
+                    break
+        if(flag==False):
+            sud.backtracking()
+        sud_string = sud.convert()
+        print('sud_string',sud_string)
+        return sud_string
+
+    
 
 
 @app.route("/c/",methods=["GET"])
