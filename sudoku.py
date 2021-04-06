@@ -9,12 +9,7 @@ Authors:  Keven Iskander, Carla Castaneda, Nicole Laslavic, Alexander Francis
 __updated__ = "2020-11-09"
 -------------------------------------------------------
 """
-import utilities
-import random
-import collections
-import time
-import cgi
-import cgitb
+import utilities, random, collections, time, cgi, cgitb
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
