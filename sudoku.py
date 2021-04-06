@@ -78,7 +78,7 @@ class Sudoku:
 
         self.lvalues = input
         if len(input)!=81:
-            print('ERROR: Invalid puzzle file')
+            print('ERROR: Invalid puzzle')
             self.table = [[Node(0) for i in range(9)] for j in range(9)]
             self.print_table()
         else:
@@ -96,7 +96,6 @@ class Sudoku:
             for k in range(len(self.table)):
                 for l in range(len(self.table)):
                     if self.table[k][l].value == 0: self.table[k][l].domain = self.update_domain(k,l)
-
 
         return 
 
