@@ -130,9 +130,9 @@
     </table>
 </div>
     <div style="align-self:center; width: 300px; margin:1em auto;">
-        <input type="button" value="Solve Puzzle" onclick="checkNum()" >
+        <input type="button" value="Reset Puzzle" onclick="reset()" >
         <input type="button" value="Random Puzzle" onclick="callRand()">
-        <input type="button" value="test button" onclick="callAPI()" >
+        <input type="button" value="Solve Puzzle" onclick="callAPI()" >
         <p id="me">{{name}}</p>
     
     </div>
@@ -277,129 +277,167 @@ window.onload = function WindowLoad(event) {
 
 
 });
-function checkNum(){
 
 
-var arr=[];
-var err=false;
-for (var i=0;i<81;i++){
-    var x=document.getElementById(i);
-    var colour=document.getElementById(i).style.backgroundColor
+    function reset(){
 
-
-    if ( x.value!= "" && colour=="rgb(248, 11, 11)" ){
-    
-        
-        err=true;
-        console.log("Incorrect input, cannot submit");
-        x.value="";
-        document.getElementById(i).style.backgroundColor="rgb(255, 255, 255)";
+        var cellElements = document.querySelectorAll('.cell');
+        console.log(cellElements.length)
+        // Set their ids
+        for (var i = 0; i < cellElements.length; i++){
+            cellElements[i].value =  "";
+            
+        }
         
     }
-    else if (x.value==""){
-        arr.push(0);
+        
+    function checkNum(){
+
+
+    var arr=[];
+    
+    var err=false;
+    for (var i=0;i<81;i++){
+        var x=document.getElementById(i);
+        var colour=document.getElementById(i).style.backgroundColor
+
+
+        if ( x.value!= "" && colour=="rgb(248, 11, 11)" ){
+        
+            
+            err=true;
+            console.log("Incorrect input, cannot submit");
+            x.value="";
+            document.getElementById(i).style.backgroundColor="rgb(255, 255, 255)";
+            
+            
+        }
+        else if (x.value==""){
+            arr.push(0);
+            
+        }
+        else if(x.value!="" && !isNaN(x.value)){
+            arr.push(x.value);
+           
+
+
+        }
+
     }
-    else if(x.value!="" && !isNaN(x.value)){
-        arr.push(x.value);
+    if (err==true){
+        alert("Incorrect input, cannot submit");
+        
 
+    }
+    else{
+        
+    console.log("array:");
+
+    for (var i=0;i<arr.length;i++){
+        console.log(arr[i])
 
     }
 
-}
-if (err==true){
-    alert("Incorrect input, cannot submit");
+    }
+
+    return arr;
+
+    }
+
+function callAPI(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    // var arr=[3,3,3,3];
+    
+    var arr=checkNum();
+
+    var input_arr=[]
+
+    for (var i=0;i<arr.length;i++){
+        if (arr[i]==0){
+            input_arr.push(false)
+
+        }
+        else{
+            input_arr.push(true)
+
+        }
+    }
     
 
-}
-else{
+    var apiUrl = 'http://127.0.0.1:5000/b/'+arr;
+    fetch(apiUrl).then(response => {
+    return response.text();
     
-console.log("array:");
-
-for (var i=0;i<arr.length;i++){
-    console.log(arr[i])
-
-}
-
-}
-
-return arr;
-
-}
-
-        function callAPI(){
-            var stuff=document.getElementById('me');
-            stuff.innerHTML="";
-            // var arr=[3,3,3,3];
-            var arr=checkNum();
-            
-  
-            var apiUrl = 'http://127.0.0.1:5000/b/'+arr;
-            fetch(apiUrl).then(response => {
-            return response.text();
-            
-            }).then(data => {
-            // Work with JSON data here
-            
-            // stuff.innerHTML=JSON.stringify(data);
-            stuff.innerHTML=data;
-            // var json=data;
-
-            // for(var i = 0; i < json.length; i++) {
-            //     var obj = json[i];
-
-        //     stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.message + '</p>'
-            // }
-
-            }).catch(err => {
-                console.log(err)
+    }).then(data => {
+    // Work with JSON data here
+    
+    // stuff.innerHTML=JSON.stringify(data);
+    stuff.innerHTML=data;
 
 
-            });
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        cellElements[i].value =  data[i];
+        if (input_arr[i]==false){
+            cellElements[i].style.backgroundColor="rgb(128, 255, 0)";
 
         }
-        function callRand(){
-            var stuff=document.getElementById('me');
-            stuff.innerHTML="";
-            // var arr=[3,3,3,3];
-            var arr=checkNum();
-            
-  
-            var apiUrl = 'http://127.0.0.1:5000/c/';
-            fetch(apiUrl).then(response => {
-            return response.text();
-            
-            }).then(data => {
-            // Work with JSON data here
-            
-            // stuff.innerHTML=JSON.stringify(data);
-            stuff.innerHTML=data;
-            // var json=data;
-
-            // for(var i = 0; i < json.length; i++) {
-            //     var obj = json[i];
-
-        //     stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.message + '</p>'
-            // }
-
-            }).catch(err => {
-                console.log(err)
+        
+        
+    }
+    }).catch(err => {
+        console.log(err)
 
 
-            });
+    });
 
-        }
-        function Callfetch(){
-            fetch("http://localhost:9000/mortgage_api/"+this.state.loan+"/"+this.state.rate+"/"+this.state.period)
-            .then(res => res.text())
-            .then(res =>{
-                var obj=JSON.parse(res);
-                this.setState({apiResponse: obj.message.toFixed(2)})
-            }
-                )
-            .catch(err => err)
+}
+function callRand(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    // var arr=[3,3,3,3];
+    var arr=checkNum();
+    
+
+    var apiUrl = 'http://127.0.0.1:5000/c/';
+    fetch(apiUrl).then(response => {
+    return response.text();
+    
+    }).then(data => {
+    // Work with JSON data here
+    
+    // stuff.innerHTML=JSON.stringify(data);
+    stuff.innerHTML=data;
+    // var json=data;
+
+    // for(var i = 0; i < json.length; i++) {
+    //     var obj = json[i];
+
+//     stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.message + '</p>'
+    // }
+
+    }).catch(err => {
+        console.log(err)
 
 
-        }
+    });
+
+}
+function Callfetch(){
+    fetch("http://localhost:9000/mortgage_api/"+this.state.loan+"/"+this.state.rate+"/"+this.state.period)
+    .then(res => res.text())
+    .then(res =>{
+        var obj=JSON.parse(res);
+        this.setState({apiResponse: obj.message.toFixed(2)})
+    }
+        )
+    .catch(err => err)
+
+
+}
  
   
 
