@@ -365,7 +365,7 @@ function callAPI(){
     }
     
 
-    var apiUrl = 'http://127.0.0.1:5000/b/'+arr;
+    var apiUrl = 'http://0.0.0.0:5000/b/'+arr;
     fetch(apiUrl).then(response => {
     return response.text();
     
@@ -401,7 +401,7 @@ function callRand(){
     // var arr=[3,3,3,3];
 
 
-    var apiUrl = 'http://127.0.0.1:5000/c/';
+    var apiUrl = 'http://0.0.0.0:5000/c/';
     fetch(apiUrl).then(response => {
     return response.text();
     
