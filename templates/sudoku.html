@@ -365,7 +365,7 @@ function callAPI(){
     }
     
 
-    var apiUrl = 'https://mighty-fortress-07712.herokuapp.com/:5000/b/'+arr;
+    var apiUrl = '/b/'+arr;
     fetch(apiUrl).then(response => {
     return response.text();
     
@@ -401,7 +401,7 @@ function callRand(){
     // var arr=[3,3,3,3];
 
 
-    var apiUrl = 'https://mighty-fortress-07712.herokuapp.com/:5000/c/';
+    var apiUrl = '/c/';
     fetch(apiUrl).then(response => {
     return response.text();
     
