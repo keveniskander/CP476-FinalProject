@@ -399,8 +399,7 @@ function callRand(){
     var stuff=document.getElementById('me');
     stuff.innerHTML="";
     // var arr=[3,3,3,3];
-    var arr=checkNum();
-    
+
 
     var apiUrl = 'http://127.0.0.1:5000/c/';
     fetch(apiUrl).then(response => {
@@ -411,13 +410,29 @@ function callRand(){
     
     // stuff.innerHTML=JSON.stringify(data);
     stuff.innerHTML=data;
-    // var json=data;
 
-    // for(var i = 0; i < json.length; i++) {
-    //     var obj = json[i];
 
-//     stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.message + '</p>'
-    // }
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        if(data[i]==0){
+            cellElements[i].value =  "";
+
+        }
+        else{
+            cellElements[i].value =  data[i];
+
+        }
+        
+      
+        cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
+
+        
+        
+        
+    }
+
 
     }).catch(err => {
         console.log(err)
