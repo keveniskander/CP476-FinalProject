@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from sudoku import *
 
+# mongo = "mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
 app = Flask(__name__)
 if __name__ == '__main__':
     app.run(debug=True)
