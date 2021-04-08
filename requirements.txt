@@ -1,7 +1,16 @@
+aiofiles==0.4.0
+aiologger==0.6.0
 click==7.1.2
+dict-toolbox==2
 Flask==1.1.2
+Flask-Cors==3.0.10
 gunicorn==20.1.0
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+msgpack==1.0.2
+pop-config==6.11
+pymongo==3.11.3
+PyYAML==5.4.1
+six==1.15.0
 Werkzeug==1.0.1
