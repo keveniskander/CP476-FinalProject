@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+<link rel="stylesheet" 
+href="{{ url_for('static', filename='style.css') }}"> 
+
 </head>
 
 <body>
@@ -129,11 +131,15 @@
   
     </table>
 </div>
-    <div style="align-self:center; width: 300px; margin:1em auto;">
+
+    <div style="align-self:center; position: absolute;top: 70px; left: 1080px;  width: 300px; margin:1em auto;">
+        <h1 id="myClock">00:00:00</h1>
         <input type="button" value="Reset Puzzle" onclick="reset()" >
         <input type="button" value="Random Puzzle" onclick="callRand()">
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
         <p id="me">{{name}}</p>
+        
+
     
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">    </script>
@@ -274,6 +280,9 @@ window.onload = function WindowLoad(event) {
         
     }
 }
+    // var start=starttime();
+    timer();
+    
 
 
 });
@@ -441,19 +450,49 @@ function callRand(){
     });
 
 }
-function Callfetch(){
-    fetch("http://localhost:9000/mortgage_api/"+this.state.loan+"/"+this.state.rate+"/"+this.state.period)
-    .then(res => res.text())
-    .then(res =>{
-        var obj=JSON.parse(res);
-        this.setState({apiResponse: obj.message.toFixed(2)})
-    }
-        )
-    .catch(err => err)
-
+function starttime(){
+    var start= Date.now();
+    return start;
 
 }
- 
+function pausetime(){
+    var start= Date.now()
+
+}
+var start= Date.now();
+
+function timer(){
+
+        var date= new Date();
+
+        var time_passed=date-start;
+        
+        // var min= time_passed.get
+        // var hour =time_passed.getHours();
+        // time_passed/=1000;
+        
+        var seconds=Math.floor((time_passed%(1000*60))/(1000));
+        var minutes=Math.floor((time_passed%(1000*60*60))/(1000*60));
+        var hours = Math.floor((time_passed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        if (seconds<10){
+            var old=seconds;
+            seconds="0"+seconds;
+        }
+        if (minutes<10){
+            var old=minutes;
+            minutes="0"+minutes;
+        }
+        if (hours<10){
+            var old=hours;
+            hours="0"+hours;
+        }
+
+
+        document.getElementById("myClock").innerHTML=hours+": "+minutes+": "+seconds;
+        setTimeout(timer,1000);
+}
+
   
 
     </script>
