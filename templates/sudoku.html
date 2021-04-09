@@ -138,6 +138,14 @@
         <h1 id="myClock">00: 00: 00</h1>
         <input type="button" value="Reset Puzzle" onclick="reset()" >
         <input type="button" value="Random Puzzle" onclick="callRand()">
+        <div class="dropdown" >
+            <button class="dropbtn">Generate Puzzle to Solve</button>
+            <div class="dropdown-content">
+              <a onclick="reset()">Easy</a>
+              <a href="#">Medium</a>
+              <a href="#">Hard</a>
+            </div>
+          </div>
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
         <input type="button" value="test" onclick="callMDBAPI()" >
         <input type="button" value="isvalid" onclick="isvalid()" >
