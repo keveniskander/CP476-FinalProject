@@ -23,3 +23,7 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 console.log('test1');
+
+function test(){
+  console.log('button test')
+}

@@ -135,10 +135,11 @@
         <input type="button" value="Reset Puzzle" onclick="reset()" >
         <input type="button" value="Random Puzzle" onclick="callRand()">
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
+        <input type="button" value="test" onclick="test()" >
         <p id="me">{{name}}</p>
     
     </div>
-    <script type="text/javascript" href="{{ url_for('static', filename='mongoConnect.js') }}">
+    <script type="text/javascript" src="mongoConnect.js">
 </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">    </script>
 
