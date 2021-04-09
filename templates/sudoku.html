@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <div>leaderboard</div>
 <div>
 <h2 style="align-self:center; width: 400px; margin:1em auto;">Welcome to Sudoku Puzzle Solver!</h2>
 
@@ -139,6 +140,7 @@
         <input type="button" value="Random Puzzle" onclick="callRand()">
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
         <input type="button" value="test" onclick="callMDBAPI()" >
+        <input type="button" value="isvalid" onclick="" >
         <p id="me">{{name}}</p>
     
     </div>
@@ -295,9 +297,16 @@ window.onload = function WindowLoad(event) {
         // Set their ids
         for (var i = 0; i < cellElements.length; i++){
             cellElements[i].value =  "";
+            cellElements[i].style.backgroundColor="rgb(255,255,255)"
             
         }
-        
+
+        // starttime();
+        // timer();
+        pausetime();
+        document.getElementById("myClock").innerHTML="00: 00: 00";     //ferfrefrefr
+
+            
         
     }
         
@@ -447,25 +456,17 @@ function callRand(){
 
         }
         else{
+            cellElements[i].style.backgroundColor="rgb(219, 213, 249)";
+
             cellElements[i].value =  data[i];
 
         }
-        
-      
-        cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
 
-        
-        
-        
+
     }
     starttime();
     timer();
     //ferfrefrefr
-
-   
-    
-   
-
 
     }).catch(err => {
         console.log(err)
@@ -475,10 +476,7 @@ function callRand(){
 
 }
 
-function pausetime(){
-    var start= Date.now()
 
-}
 function isvalid(){
     var stuff=document.getElementById('me');
     stuff.innerHTML="";
@@ -527,22 +525,30 @@ function isvalid(){
 
 }
 var start= Date.now();
+var active=false;
 function starttime(){
     start= Date.now();
+    active=true;
     
+
+}
+function pausetime(){
+    start= Date.now();
+    active=false;
 
 }
 
 function timer(){
 
+    if (active==true){
         var date= new Date();
 
         var time_passed=date-start;
-        
+
         // var min= time_passed.get
         // var hour =time_passed.getHours();
         // time_passed/=1000;
-        
+
         var seconds=Math.floor((time_passed%(1000*60))/(1000));
         var minutes=Math.floor((time_passed%(1000*60*60))/(1000*60));
         var hours = Math.floor((time_passed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -563,6 +569,10 @@ function timer(){
 
         document.getElementById("myClock").innerHTML=hours+": "+minutes+": "+seconds;
         setTimeout(timer,1000);
+
+    }
+
+
 }
   
 
