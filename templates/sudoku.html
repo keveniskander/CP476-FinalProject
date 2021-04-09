@@ -130,14 +130,15 @@
   
     </table>
 </div>
-<script type="text/javascript" href="{{ url_for('static', filename='mongoConnect.js') }}">
+<!-- <script type="text/javascript" src="{{ url_for('static', filename='mongoConnect.js') }}"> -->
+
 </script>
     <div style="align-self:center; width: 300px; margin:1em auto;">
-        <h1 id="myClock">00:00:00</h1>
+        <h1 id="myClock">00: 00: 00</h1>
         <input type="button" value="Reset Puzzle" onclick="reset()" >
         <input type="button" value="Random Puzzle" onclick="callRand()">
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
-        <input type="button" value="test" onclick="test()" >
+        <input type="button" value="test" onclick="callMDBAPI()" >
         <p id="me">{{name}}</p>
     
     </div>
@@ -282,6 +283,8 @@ window.onload = function WindowLoad(event) {
 }
 
 
+
+
 });
 
 
@@ -294,6 +297,7 @@ window.onload = function WindowLoad(event) {
             cellElements[i].value =  "";
             
         }
+        
         
     }
         
@@ -401,6 +405,22 @@ function callAPI(){
     });
 
 }
+function callMDBAPI() {
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    fetch("http://localhost:9000/mongodbAPI")
+        .then(res => {
+            return res.text()})
+        .then(data => {
+            stuff.innerHTML=data;
+
+
+        }).catch(err => {
+        console.log(err)
+
+
+    });
+}
 function callRand(){
     var stuff=document.getElementById('me');
     stuff.innerHTML="";
@@ -408,6 +428,65 @@ function callRand(){
 
 
     var apiUrl = '/c/';
+    fetch(apiUrl).then(response => {
+    return response.text();
+    
+    }).then(data => {
+    // Work with JSON data here
+    
+    // stuff.innerHTML=JSON.stringify(data);
+    stuff.innerHTML=data;
+
+
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        if(data[i]==0){
+            cellElements[i].value =  "";
+
+        }
+        else{
+            cellElements[i].value =  data[i];
+
+        }
+        
+      
+        cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
+
+        
+        
+        
+    }
+    starttime();
+    timer();
+    //ferfrefrefr
+
+   
+    
+   
+
+
+    }).catch(err => {
+        console.log(err)
+
+
+    });
+
+}
+
+function pausetime(){
+    var start= Date.now()
+
+}
+function isvalid(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    // var arr=[3,3,3,3];
+    var arr=checkNum();
+
+
+    var apiUrl = '/c/'+arr;
     fetch(apiUrl).then(response => {
     return response.text();
     
@@ -447,19 +526,44 @@ function callRand(){
     });
 
 }
-function Callfetch(){
-    fetch("http://localhost:9000/mortgage_api/"+this.state.loan+"/"+this.state.rate+"/"+this.state.period)
-    .then(res => res.text())
-    .then(res =>{
-        var obj=JSON.parse(res);
-        this.setState({apiResponse: obj.message.toFixed(2)})
-    }
-        )
-    .catch(err => err)
-
+var start= Date.now();
+function starttime(){
+    start= Date.now();
+    
 
 }
- 
+
+function timer(){
+
+        var date= new Date();
+
+        var time_passed=date-start;
+        
+        // var min= time_passed.get
+        // var hour =time_passed.getHours();
+        // time_passed/=1000;
+        
+        var seconds=Math.floor((time_passed%(1000*60))/(1000));
+        var minutes=Math.floor((time_passed%(1000*60*60))/(1000*60));
+        var hours = Math.floor((time_passed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        if (seconds<10){
+            var old=seconds;
+            seconds="0"+seconds;
+        }
+        if (minutes<10){
+            var old=minutes;
+            minutes="0"+minutes;
+        }
+        if (hours<10){
+            var old=hours;
+            hours="0"+hours;
+        }
+
+
+        document.getElementById("myClock").innerHTML=hours+": "+minutes+": "+seconds;
+        setTimeout(timer,1000);
+}
   
 
     </script>
@@ -468,3 +572,4 @@ function Callfetch(){
 </body>
 
 </html>
+

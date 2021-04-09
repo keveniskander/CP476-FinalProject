@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from sudoku import *
-from flask_pymongo import PyMongo
 
 # mongo = "mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
