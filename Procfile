@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: node fakedata.js && gunicorn app:app

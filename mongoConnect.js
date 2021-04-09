@@ -9,6 +9,7 @@
 //   client.close();
 // });
 
+
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 MongoClient.connect(url, function(err, db) {
