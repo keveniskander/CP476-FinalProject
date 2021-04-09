@@ -1,1 +1,1 @@
-web: node fakedata.js && gunicorn app:app
+web: node mongoConnect.js && gunicorn app:app
