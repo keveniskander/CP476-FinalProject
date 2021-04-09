@@ -47,7 +47,7 @@ def process(index_arr):
 
 
 @app.route("/c1/",methods=["GET"])
-def random():
+def random2():
     board = generateBoard()
     sud = Sudoku(board)
         
@@ -66,7 +66,7 @@ def random():
     return r
 
 @app.route("/c2/",methods=["GET"])
-def random():
+def random1():
     board = generateBoard()
     sud = Sudoku(board)
         
@@ -85,7 +85,7 @@ def random():
     return r
 
 @app.route("/c3/",methods=["GET"])
-def random():
+def random3():
     board = generateBoard()
     sud = Sudoku(board)
         
