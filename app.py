@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 from sudoku import *
+from pymongo import *
 
 # mongo = "mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+client = pymongo.MongoClient("mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = client.test
 
 app = Flask(__name__)
 if __name__ == '__main__':
