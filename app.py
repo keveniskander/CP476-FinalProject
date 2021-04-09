@@ -64,3 +64,27 @@ def random():
     # app.run(debug=True)
     r = sud_string
     return r
+
+    
+@app.route("/d/<index_arr>",methods=["GET","POST"])
+def validate():
+    if request.method == 'POST': # POST request
+        print(request.get_text())  # parse as text
+        return 'OK', 200
+    else:
+        # print("Error: Keven's Error")
+        puzzle_arr = []
+    
+        index_arr = index_arr.replace(",","")
+        for i in range(len(index_arr)):
+            puzzle_arr.append(int(index_arr[i]))
+        # print("puzzle array:", puzzle_arr)
+        sud = Sudoku(puzzle_arr)
+        sud_bool = sud.is_valid()
+        sud_string = ""
+        if sud_bool == True:
+            sud_string = '1'
+        else:
+            sud_string = '0'
+        print('sud_string',sud_string)
+        return sud_string
