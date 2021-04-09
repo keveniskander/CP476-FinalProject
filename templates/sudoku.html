@@ -141,9 +141,9 @@
         <div class="dropdown" >
             <button class="dropbtn">Generate Puzzle to Solve</button>
             <div class="dropdown-content">
-              <a onclick="reset()">Easy</a>
-              <a href="#">Medium</a>
-              <a href="#">Hard</a>
+              <a onclick="CallEasy()">Easy</a>
+              <a onclick="CallMedium()">Medium</a>
+              <a onclick="CallHard()">Hard</a>
             </div>
           </div>
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
@@ -439,13 +439,103 @@ function callMDBAPI() {
 
     });
 }
-function callRand(){
+function CallEasy(){
     var stuff=document.getElementById('me');
     stuff.innerHTML="";
     // var arr=[3,3,3,3];
 
 
-    var apiUrl = '/c/';
+    var apiUrl = '/c1/';
+    fetch(apiUrl).then(response => {
+    return response.text();
+    
+    }).then(data => {
+    // Work with JSON data here
+    
+    // stuff.innerHTML=JSON.stringify(data);
+    stuff.innerHTML=data;
+
+
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        if(data[i]==0){
+            cellElements[i].value =  "";
+
+        }
+        else{
+            cellElements[i].style.backgroundColor="rgb(219, 213, 249)";
+
+            cellElements[i].value =  data[i];
+
+        }
+
+
+    }
+    starttime();
+    timer();
+    //ferfrefrefr
+
+    }).catch(err => {
+        console.log(err)
+
+
+    });
+
+}
+function CallMedium(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    // var arr=[3,3,3,3];
+
+
+    var apiUrl = '/c2/';
+    fetch(apiUrl).then(response => {
+    return response.text();
+    
+    }).then(data => {
+    // Work with JSON data here
+    
+    // stuff.innerHTML=JSON.stringify(data);
+    stuff.innerHTML=data;
+
+
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        if(data[i]==0){
+            cellElements[i].value =  "";
+
+        }
+        else{
+            cellElements[i].style.backgroundColor="rgb(219, 213, 249)";
+
+            cellElements[i].value =  data[i];
+
+        }
+
+
+    }
+    starttime();
+    timer();
+    //ferfrefrefr
+
+    }).catch(err => {
+        console.log(err)
+
+
+    });
+
+}
+function CallHard(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    // var arr=[3,3,3,3];
+
+
+    var apiUrl = '/c3/';
     fetch(apiUrl).then(response => {
     return response.text();
     
