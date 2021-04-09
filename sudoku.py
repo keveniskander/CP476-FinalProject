@@ -13,7 +13,7 @@ for the purpose of this course.
 The Original Authors are Keven Iskander, Carla Castaneda,
 Nicole Laslavic and Alexander Francis
 __updated__ = "2021-04-10"
--------------------------------------------------------
+-------------------------i------------------------------
 """
 import utilities, random, collections, time, cgi, cgitb
 

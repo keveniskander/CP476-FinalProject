@@ -140,7 +140,8 @@
         <input type="button" value="Random Puzzle" onclick="callRand()">
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
         <input type="button" value="test" onclick="callMDBAPI()" >
-        <input type="button" value="isvalid" onclick="" >
+        <input type="button" value="isvalid" onclick="isvalid()" >
+        
         <p id="me">{{name}}</p>
     
     </div>
@@ -484,7 +485,7 @@ function isvalid(){
     var arr=checkNum();
 
 
-    var apiUrl = '/c/'+arr;
+    var apiUrl = '/d/'+arr;
     fetch(apiUrl).then(response => {
     return response.text();
     
@@ -494,27 +495,39 @@ function isvalid(){
     // stuff.innerHTML=JSON.stringify(data);
     stuff.innerHTML=data;
 
+    if (data=="0"){
+        
+        alert("Your puzzle is incorrect! Try again");
 
-    var cellElements = document.querySelectorAll('.cell');
-    console.log(cellElements.length)
-    // Set their ids
-    for (var i = 0; i < cellElements.length; i++){
-        if(data[i]==0){
-            cellElements[i].value =  "";
+    }
+    else if (data=="1"){
+        alert("Your puzzle is correct!");
+        
 
-        }
-        else{
-            cellElements[i].value =  data[i];
+    }
 
-        }
+
+
+    // var cellElements = document.querySelectorAll('.cell');
+    // console.log(cellElements.length)
+    // // Set their ids
+    // for (var i = 0; i < cellElements.length; i++){
+    //     if(data[i]==0){
+    //         cellElements[i].value =  "";
+
+    //     }
+    //     else{
+    //         cellElements[i].value =  data[i];
+
+    //     }
         
       
-        cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
+    //     cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
 
         
         
         
-    }
+    // }
 
 
     }).catch(err => {
