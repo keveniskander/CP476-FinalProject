@@ -130,6 +130,8 @@
   
     </table>
 </div>
+<script type="text/javascript" href="{{ url_for('static', filename='mongoConnect.js') }}">
+</script>
     <div style="align-self:center; width: 300px; margin:1em auto;">
         <h1 id="myClock">00:00:00</h1>
         <input type="button" value="Reset Puzzle" onclick="reset()" >
@@ -139,8 +141,7 @@
         <p id="me">{{name}}</p>
     
     </div>
-    <script type="text/javascript" href="{{ url_for('static', filename='mongoConnect.js') }}">
-</script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">    </script>
 
 <script type="text/javascript">
