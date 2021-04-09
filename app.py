@@ -46,7 +46,45 @@ def process(index_arr):
     
 
 
-@app.route("/c/",methods=["GET"])
+@app.route("/c1/",methods=["GET"])
+def random():
+    board = generateBoard()
+    sud = Sudoku(board)
+        
+    sud.backtracking()
+    sud.print_table()
+    # print("Randomly generated puzzle")
+    sud.easy()
+    sud.print_table()
+    sud_string = sud.convert()
+# print(sud.convert())
+
+    # if __name__ == "__main__":
+    #     main()
+    # app.run(debug=True)
+    r = sud_string
+    return r
+
+@app.route("/c2/",methods=["GET"])
+def random():
+    board = generateBoard()
+    sud = Sudoku(board)
+        
+    sud.backtracking()
+    sud.print_table()
+    # print("Randomly generated puzzle")
+    sud.medium()
+    sud.print_table()
+    sud_string = sud.convert()
+# print(sud.convert())
+
+    # if __name__ == "__main__":
+    #     main()
+    # app.run(debug=True)
+    r = sud_string
+    return r
+
+@app.route("/c3/",methods=["GET"])
 def random():
     board = generateBoard()
     sud = Sudoku(board)
