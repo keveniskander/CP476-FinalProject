@@ -6,11 +6,26 @@
 </head>
 
 <body>
-    <div>leaderboard</div>
+
+        <table id="leaderboard" style="background-color: aliceblue;">
+            <tbody>
+                <tr class="row" style="border: 5xp black;">
+                    <td rowspan="2"></td>
+                    <th colspan="2">Visitors</th>
+                </tr>
+                <tr class="row">
+                    <th>User Name</th>
+                    <th>Best Time</th>
+             
+                </tr>
+            </tbody>
+        
+        </table>
+
 <div>
 <h2 style="align-self:center; width: 400px; margin:1em auto;">Welcome to Sudoku Puzzle Solver!</h2>
 
-<table>
+<table class="table1">
     <td ><input type="text" maxlength="1" class="cell" ></td>
     <td><input type="text" maxlength="1"class="cell"></td>   
     <td><input type="text" maxlength="1" class="cell"> </td>
@@ -291,6 +306,7 @@ window.onload = function WindowLoad(event) {
         cellElements[i].id =  i;
         
     }
+    getDB();
 }
 
 
@@ -540,8 +556,7 @@ function CallHard(){
     return response.text();
     
     }).then(data => {
-    // Work with JSON data here
-    
+ 
     // stuff.innerHTML=JSON.stringify(data);
     stuff.innerHTML=data;
 
@@ -606,28 +621,6 @@ function isvalid(){
 
 
 
-    // var cellElements = document.querySelectorAll('.cell');
-    // console.log(cellElements.length)
-    // // Set their ids
-    // for (var i = 0; i < cellElements.length; i++){
-    //     if(data[i]==0){
-    //         cellElements[i].value =  "";
-
-    //     }
-    //     else{
-    //         cellElements[i].value =  data[i];
-
-    //     }
-        
-      
-    //     cellElements[i].style.backgroundColor="rgb(12, 255, 0)";
-
-        
-        
-        
-    // }
-
-
     }).catch(err => {
         console.log(err)
 
@@ -682,6 +675,40 @@ function timer(){
         setTimeout(timer,1000);
 
     }
+
+
+}
+
+function getDB(){
+    var stuff=document.getElementById('me');
+    stuff.innerHTML="";
+    fetch("http://localhost:9000/mongodbAPI/users")
+        .then(res => {
+            return res.json()})
+        .then(data => {
+            stuff.innerHTML=data;
+
+            var table=document.getElementById("leaderboard");
+            var json=data;
+
+            for(var i = 0; i < json.length; i++) {
+                var obj = json[i];
+                var row= table.insertRow();
+                var cell1=row.insertCell(0);
+                var cell2=row.insertCell(1);
+                cell1.innerHTML=obj.name;
+                cell2.innerHTML=obj.address;
+
+                // stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.address + '</p>'
+            }
+
+
+
+        }).catch(err => {
+        console.log(err)
+
+
+    });
 
 
 }

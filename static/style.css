@@ -1,4 +1,4 @@
-table {
+.table1 {
     width: 570px;
     height: 600px;
     border: 7px solid rgb(0, 0, 0);
@@ -6,7 +6,7 @@ table {
     align-self: center;
     margin:1em auto;
   }
-  table {
+  .table1 {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   
@@ -38,6 +38,10 @@ td:nth-child(3n) {
   } 
  tr:nth-child(3n) td {
     border-bottom:5px solid rgb(87, 87, 87);
+  }
+  .row{
+    border: 5px;
+
   }
 
 
