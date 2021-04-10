@@ -28,7 +28,7 @@ router.get("/users", function(req, res, next) {
 
     var url = "mongodb+srv://admin:1234@projects.rorbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     MongoClient.connect(url, function(err, db) {
-        dbo.foo.find().sort({_id:1}).limit(50);
+        dbo.collection("users").find().sort({_id:1}).limit(50);
 
     if (err) throw err;
     var dbo = db.db("sudoku");
