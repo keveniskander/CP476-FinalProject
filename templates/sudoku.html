@@ -442,7 +442,7 @@ function callAPI(){
 function callMDBAPI() {
     var stuff=document.getElementById('me');
     stuff.innerHTML="";
-    fetch("/mongodbAPI")
+    fetch("http://localhost:9000/mongodbAPI")
         .then(res => {
             return res.text()})
         .then(data => {
