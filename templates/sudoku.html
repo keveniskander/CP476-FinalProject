@@ -7,140 +7,154 @@
 
 <body>
 
-        <table id="leaderboard" style="background-color: aliceblue;">
-            <tbody>
-                <tr class="row" style="border: 5xp black;">
-                    <td rowspan="2"></td>
+
+    <div style="float:left; width: 300px;">
+    
+        <table id="leaderboard" style="background-color: rgb(188, 196, 202); border: 5xp solid black; width:250px">
+            <tbody id="leaderbody">
+                <tr  style="border: 5xp black;">
+                    
                     <th colspan="2">Visitors</th>
                 </tr>
                 <tr class="row">
-                    <th>User Name</th>
-                    <th>Best Time</th>
+                    <th>User Name: </th>
+                    <th>Best Time: </th>
              
                 </tr>
+
             </tbody>
         
         </table>
+    </div>
 
-<div>
+
+
+<div style=" float:left; width: 700px;">
 <h2 style="align-self:center; width: 400px; margin:1em auto;">Welcome to Sudoku Puzzle Solver!</h2>
+<!-- <h1 id="loading"></h1> -->
+<!-- <div id="screen"class="alert">
+    <span  id ="loading"></span> 
+    
+  </div> -->
+
 
 <table class="table1">
-    <td ><input type="text" maxlength="1" class="cell" ></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" pattern="^[1-9]" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1"class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell"></td>   
-    <td><input type="text" maxlength="1"class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1"class="cell" ></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1"  class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
-<tr>
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+<tr class="tr1">
+    <td class="td1"><input type="text" maxlength="1" class="cell" ></td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1"class="cell"> </td>
 
-    <td ><input type="text" maxlength="1" class="cell"></td>
-    <td><input type="text" maxlength="1" class="cell"></td>   
-    <td><input type="text" maxlength="1" class="cell"> </td>
+    <td class="td1"><input type="text" maxlength="1"class="cell"></td>
+    <td class="td1"><input type="text" maxlength="1" class="cell"></td>   
+    <td class="td1"><input type="text" maxlength="1" class="cell"> </td>
 </tr>
 
   
@@ -148,26 +162,53 @@
 </div>
 <!-- <script type="text/javascript" src="{{ url_for('static', filename='mongoConnect.js') }}"> -->
 
-</script>
-    <div style="align-self:center; width: 300px; margin:1em auto;">
+
+    <div style="align-self:center; width: 300px; margin:1em auto; float:left">
         <h1 id="myClock">00: 00: 00</h1>
         <input type="button" value="Reset Puzzle" onclick="reset()" >
-        <input type="button" value="Random Puzzle" onclick="callRand()">
+        
         <div class="dropdown" >
-            <button class="dropbtn">Generate Puzzle to Solve</button>
+            <button class="dropbtn" value="Random Puzzle">Random Puzzle</button>
             <div class="dropdown-content">
+                
               <a onclick="CallEasy()">Easy</a>
               <a onclick="CallMedium()">Medium</a>
               <a onclick="CallHard()">Hard</a>
             </div>
           </div>
         <input type="button" value="Solve Puzzle" onclick="callAPI()" >
-        <input type="button" value="test" onclick="getDB()" >
-        <input type="button" value="isvalid" onclick="isvalid()" >
+        <!-- <input type="button" value="test" onclick="getDB()" > -->
+        <!-- <input type="button" value="isvalid" onclick="isvalid()" > -->
+     
         
-        <p id="me">{{name}}</p>
+
     
     </div>
+    <div id="screen"class="alert">
+        <span  id ="loading"></span> 
+        
+      </div>
+
+    <div class="form-popup" id="myForm">
+        <form   class="form-container">
+          <h1>Want to save your time?</h1>
+      
+          <label ><b>Name</b></label>
+          <input type="text" placeholder="Enter Name or nickname" id="nickname" required>
+      
+          <!-- <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required> -->
+      <div class="popup" >
+        <button type="button" class="btn" onclick="sendDB()">Submit  </button>
+
+        <span class="popuptext" id="myPopup">A Simple Popup!</span>
+
+      
+      </div>
+
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">    </script>
 
@@ -190,6 +231,10 @@ $(".cell").on('input', function(){
 
     if (x==""){
         document.getElementById(id).style.backgroundColor="rgb(255, 255, 255)";
+
+    }
+    if (x=="0"){
+        document.getElementById(id).value="";
 
     }
     
@@ -225,15 +270,13 @@ $(".cell").on('input', function(){
         }
       i+=9;
     }
-    //for subsquares
-
 
   
     var subsquare_index= Math.floor((parseInt(id)%9)/3)+3*(Math.floor(parseInt(id)/(9*3)))
     console.log("subsquareindex: "+subsquare_index);
 
     var inner_index;
-
+    
 
     switch(subsquare_index) {
     case 0:
@@ -289,6 +332,10 @@ $(".cell").on('input', function(){
 
     }
 
+    if(checkdone() && badinput()){
+        isvalid();
+    }
+
 
 
 
@@ -306,13 +353,71 @@ window.onload = function WindowLoad(event) {
         cellElements[i].id =  i;
         
     }
-    // getDB();
+    getDB();
+    var x = document.getElementById("screen");
+    x.style.display = "none";
 }
 
 
 
 
 });
+
+function sendDB(){
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
+    var name=document.getElementById("nickname").value;
+    // document.getElementById("myClock").innerHTML
+    var time=document.getElementById("myClock").innerHTML;
+    fetch("http://localhost:9000/mongodbAPI/insertusers/"+name+"/"+time)
+        .then(res => {
+            return res.text()})
+        .then(data => {
+            // stuff.innerHTML=data;
+
+            // var table=document.getElementById("leaderboard");
+            // var json=data;
+         if (data=="inserted"){
+                var popup = document.getElementById("myPopup");
+                document.getElementById("myPopup").innerHTML="Your time was added to leaderboard";
+                popup.classList.toggle("show");
+
+            }
+
+
+
+
+        }).catch(err => {
+        console.log(err)
+
+
+    });
+    // window.location.reload();
+}
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+    window.location.reload();
+}
+
+function badinput(){
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    var result=true;
+    for (var i = 0; i < cellElements.length; i++){
+        if (cellElements[i].backgroundColor=="rgb(248, 11, 11)"){
+            result=false;
+
+        }
+        
+    }
+    return result;
+    
+}
 
 
     function reset(){
@@ -389,13 +494,17 @@ window.onload = function WindowLoad(event) {
     }
 
 function callAPI(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     // var arr=[3,3,3,3];
     
     var arr=checkNum();
 
     var input_arr=[]
+    $('#loading').show();
+    $('#screen').show();
+
+    document.getElementById("loading").innerHTML="Please wait while your puzzle solves...";
 
     for (var i=0;i<arr.length;i++){
         if (arr[i]==0){
@@ -417,7 +526,7 @@ function callAPI(){
     // Work with JSON data here
     
     // stuff.innerHTML=JSON.stringify(data);
-    stuff.innerHTML=data;
+    // stuff.innerHTML=data;
 
 
     var cellElements = document.querySelectorAll('.cell');
@@ -432,6 +541,11 @@ function callAPI(){
         
         
     }
+    document.getElementById("loading").innerHTML="puzzle solved!";
+    setTimeout(function(){
+    $('#loading').hide()
+    $('#screen').hide()
+}, 3000) // time in millisecond for as long as you like
     }).catch(err => {
         console.log(err)
 
@@ -439,26 +553,12 @@ function callAPI(){
     });
 
 }
-function callMDBAPI() {
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
-    fetch("http://localhost:9000/mongodbAPI")
-        .then(res => {
-            return res.text()})
-        .then(data => {
-            stuff.innerHTML=data;
 
-
-        }).catch(err => {
-        console.log(err)
-
-
-    });
-}
 function CallEasy(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     // var arr=[3,3,3,3];
+    clearbackground();
 
 
     var apiUrl = '/c1/';
@@ -469,7 +569,7 @@ function CallEasy(){
     // Work with JSON data here
     
     // stuff.innerHTML=JSON.stringify(data);
-    stuff.innerHTML=data;
+    // stuff.innerHTML=data;
 
 
     var cellElements = document.querySelectorAll('.cell');
@@ -500,10 +600,23 @@ function CallEasy(){
     });
 
 }
+function clearbackground(){
+
+    var cellElements = document.querySelectorAll('.cell');
+    // console.log(cellElements.length)
+    // Set their ids
+    for (var i = 0; i < cellElements.length; i++){
+        cellElements[i].style.backgroundColor="rgb(255, 255, 255)";
+
+
+    }
+
+}
 function CallMedium(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     // var arr=[3,3,3,3];
+    clearbackground();
 
 
     var apiUrl = '/c2/';
@@ -514,7 +627,7 @@ function CallMedium(){
     // Work with JSON data here
     
     // stuff.innerHTML=JSON.stringify(data);
-    stuff.innerHTML=data;
+    // stuff.innerHTML=data;
 
 
     var cellElements = document.querySelectorAll('.cell');
@@ -545,10 +658,27 @@ function CallMedium(){
     });
 
 }
+function checkdone(){
+    var cellElements = document.querySelectorAll('.cell');
+    console.log(cellElements.length)
+    // Set their ids
+    var result=true;
+    for (var i = 0; i < cellElements.length; i++){
+        if (cellElements[i].value==""){
+            result=false;
+
+        }
+        
+    }
+    return result;
+
+
+}
 function CallHard(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     // var arr=[3,3,3,3];
+    clearbackground()
 
 
     var apiUrl = '/c3/';
@@ -558,7 +688,7 @@ function CallHard(){
     }).then(data => {
  
     // stuff.innerHTML=JSON.stringify(data);
-    stuff.innerHTML=data;
+    // stuff.innerHTML=data;
 
 
     var cellElements = document.querySelectorAll('.cell');
@@ -592,12 +722,16 @@ function CallHard(){
 
 
 function isvalid(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     // var arr=[3,3,3,3];
     var arr=checkNum();
 
+    
 
+    if (checkdone()){
+       
+        
     var apiUrl = '/d/'+arr;
     fetch(apiUrl).then(response => {
     return response.text();
@@ -606,7 +740,7 @@ function isvalid(){
     // Work with JSON data here
     
     // stuff.innerHTML=JSON.stringify(data);
-    stuff.innerHTML=data;
+    // stuff.innerHTML=data;
 
     if (data=="0"){
         
@@ -618,6 +752,8 @@ function isvalid(){
         
 
     }
+    pausetime();
+    openForm() ;
 
 
 
@@ -626,6 +762,14 @@ function isvalid(){
 
 
     });
+
+    }
+    else{
+        alert("something went wrong")
+    }
+
+
+
 
 }
 var start= Date.now();
@@ -680,24 +824,29 @@ function timer(){
 }
 
 function getDB(){
-    var stuff=document.getElementById('me');
-    stuff.innerHTML="";
+    // var stuff=document.getElementById('me');
+    // stuff.innerHTML="";
     fetch("http://localhost:9000/mongodbAPI/users")
         .then(res => {
             return res.json()})
         .then(data => {
-            stuff.innerHTML=data;
+            // stuff.innerHTML=data;
 
             var table=document.getElementById("leaderboard");
             var json=data;
 
             for(var i = 0; i < json.length; i++) {
                 var obj = json[i];
+         
                 var row= table.insertRow();
                 var cell1=row.insertCell(0);
                 var cell2=row.insertCell(1);
                 cell1.innerHTML=obj.name;
                 cell2.innerHTML=obj.address;
+               
+                // row.appendChild(td);
+                // row.appendChild(td2);
+
 
                 // stuff.innerHTML+='<p><span >' + obj.name + ': ' + obj.address + '</p>'
             }

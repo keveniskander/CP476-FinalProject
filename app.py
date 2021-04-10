@@ -105,7 +105,7 @@ def random3():
 
     
 @app.route("/d/<index_arr>",methods=["GET","POST"])
-def validate():
+def validate(index_arr):
     if request.method == 'POST': # POST request
         print(request.get_text())  # parse as text
         return 'OK', 200
