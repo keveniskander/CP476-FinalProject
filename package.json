@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "cd static/api && npm install"
+    "postinstall": "cd static/api && npm install && npm start"
   },
   "repository": {
     "type": "git",
