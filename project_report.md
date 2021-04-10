@@ -4,7 +4,12 @@
 
 ### P2.1 Client side component & UI    
 The following images show the completed client side components in which users will be interacting with. It shows the board in which the puzzle will be shown, a timer under the board to keep track of the highest timed scores and displays the top scores seen top left of the screen.
-![Sudoku Solver](images/board.png)
+
+The following image shows an empty Sudoku board
+![Sudoku Solver with empty board](images/board2.png)
+
+The following image shows a completed Sudoku board
+![Sudoku Solver with completed board](images/board.png)
 
 Here we see that users can choose between easy, medium or hard sudoku puzzles.
 ![Sudoku Solver](images/buttons.png)
