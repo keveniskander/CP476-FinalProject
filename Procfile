@@ -1,1 +1,1 @@
-web: node static/mongoConnect.js && gunicorn app:app
+web: gunicorn app:app
