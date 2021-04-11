@@ -1,0 +1,68 @@
+<h1 id="cp476-finalproject">CP476-FinalProject</h1>
+<h2 id="system-design-implementation">System design &amp; implementation</h2>
+<h3 id="p2.1-client-side-component-ui">P2.1 Client side component &amp; UI</h3>
+<p>The following images show the completed client side components in which users will be interacting with. It shows the board in which the puzzle will be shown, a timer under the board to keep track of the highest timed scores and displays the top scores seen top left of the screen.</p>
+<p>The following image shows an empty Sudoku board</p>
+<figure>
+<img src="images/board2.png" alt="Sudoku Solver with empty board" style="width:95.0%" /><figcaption>Sudoku Solver with empty board</figcaption>
+</figure>
+<p>The following image shows a completed Sudoku board</p>
+<figure>
+<img src="images/board.png" alt="Sudoku Solver with completed board" style="width:95.0%" /><figcaption>Sudoku Solver with completed board</figcaption>
+</figure>
+<p>Here we see that users can choose between easy, medium or hard sudoku puzzles.</p>
+<figure>
+<img src="images/buttons.png" alt="Sudoku Solver" style="width:95.0%" /><figcaption>Sudoku Solver</figcaption>
+</figure>
+<p>Once the user has typed the last value automatically if the puzzle is correct a pop-up message will display saying ‘Successful!’</p>
+<figure>
+<img src="images/Success.png" alt="Sudoku Solver Success" style="width:95.0%" /><figcaption>Sudoku Solver Success</figcaption>
+</figure>
+<p>After the user is done completing the puzzle on their own on the bottom right of the screen users will have the ability to type in their names to submit their scores to be stored in our database. The five most recent submissions and their times will be displayed on the top left of the screen.</p>
+<figure>
+<img src="images/dbex.png" alt="Sudoku Solver Success" style="width:95.0%" /><figcaption>Sudoku Solver Success</figcaption>
+</figure>
+<h3 id="p2.2-server-side-cgi-components">P2.2 Server side CGI components</h3>
+<p>We used flask to help build and interact with our web application.</p>
+<figure>
+<img src="images/flask.png" alt="Flask example code" style="width:95.0%" /><figcaption>Flask example code</figcaption>
+</figure>
+<p>We also used AJAX for communicating with the application asynchronously.</p>
+<figure>
+<img src="images/ajax.png" alt="AJAX example code" style="width:95.0%" /><figcaption>AJAX example code</figcaption>
+</figure>
+<h3 id="p2.3-database-tier-design-data-usage">P2.3 Database tier design, data, usage</h3>
+<p>We used MongoDB to design our database. Our database holds information regarding our site visitors and their best solve times. The database information is also displayed on our web application for sudoku solver so users can compete for the best times.</p>
+<figure>
+<img src="images/db.png" alt="The database information is displayed at the top left of the web application" style="width:95.0%" /><figcaption>The database information is displayed at the top left of the web application</figcaption>
+</figure>
+<h3 id="p2.4-new-features-and-tools">P2.4 New features and tools</h3>
+<p>One of the new tools we used was Flask.</p>
+<figure>
+<img src="images/flask.png" alt="Flask example code" style="width:95.0%" /><figcaption>Flask example code</figcaption>
+</figure>
+<p>One new feature we added was for the boxes to turn red when a confict occurs. Conflicts occur when certain number values are inserted in boxes where the puzzle is deemed automatically incorrect. In other words, in Sudoku no same numbers may be present within the same row, column or sub-square.</p>
+<figure>
+<img src="images/redbox.png" alt="Red Box showing incorrect placement of number value ‘1’" style="width:95.0%" /><figcaption>Red Box showing incorrect placement of number value ‘1’</figcaption>
+</figure>
+<p>Another new tool we used was Heroku. Heroku is a cloud application platform that we used to deploy our sudoku solver. We used this site https://devcenter.heroku.com/articles/git#:~:text=To%20deploy%20your%20app%20to,heroku%20master%20Initializing%20repository%2C%20done to learn how to deploy the project correctly. We used heroku to deploy our python application, alongside our Node API implementation, and html body.</p>
+<figure>
+<img src="images/heroku.png" alt="Heroku" style="width:95.0%" /><figcaption>Heroku</figcaption>
+</figure>
+<p>The image below shows Heroku connected to the github repository of our project that it used to deploy.</p>
+<figure>
+<img src="images/deploy2.png" alt="Heroku" style="width:95.0%" /><figcaption>Heroku</figcaption>
+</figure>
+<h3 id="p2.5-problem-solving-algorithms">P2.5 Problem solving algorithms</h3>
+<p>We used the backtracking and AC3 algorithms to solve unsolved sudoku puzzles. We also used the minimum remaining value heuristic to aid our alogrithms in solving. The code for these three functions are shown below.</p>
+<figure>
+<img src="images/AC3.png" alt="AC3 Algorithm" style="width:95.0%" /><figcaption>AC3 Algorithm</figcaption>
+</figure>
+<figure>
+<img src="images/backtracking.png" alt="Backtracking Algorithm" style="width:95.0%" /><figcaption>Backtracking Algorithm</figcaption>
+</figure>
+<figure>
+<img src="images/MRVH.png" alt="minimum remaining value heuristic" style="width:95.0%" /><figcaption>minimum remaining value heuristic</figcaption>
+</figure>
+<h3 id="p2.6-efficiency-and-robustness">P2.6 Efficiency and robustness</h3>
+<p>Our application if efficient and robust and it solves, generates and checks for correctness in puzzles with extreme accuracy and speed. It contains all features that users would want in a high quality sodoku puzzle application including a timer, the ability to add your score to the leaderboard, reset puzzles, generate puzzles at different difficulties and solves unfinished puzzles.</p>
