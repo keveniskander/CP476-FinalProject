@@ -49,12 +49,16 @@ Step 1: Download flask into the CP476-FinalProject (aka entire project folder)
 8. To run the code, type in cmd: 'flask run'
 9. Remember in VScode to change the python.exe interpreter location to inside the env folder.
 
-Step 2: Run express API
+Step 2: Download node_modules
 1. Open cmd
-2. cd into the api folder, type in cmd: 'cd C:\cp476\CP476-FinalProject\static\api'
+2. cd into the project folder, type in cmd: 'cd C:\cp476\CP476-FinalProject'
 3. type in cmd: 'npm install', To install node modules
-4. type in cmd: 'npm start'
 
+Step 3: Download and run express API
+1. cd into the api folder, type in cmd: 'cd C:\cp476\CP476-FinalProject\static\api'
+2. type in cmd: 'npm install', To install node modules
+3. type in cmd: 'npm install --save cors'
+4. type in cmd: 'npm start'
 
 ## External resources: 
 Heroku is a cloud platform that we used to deploy our sudoku program.
