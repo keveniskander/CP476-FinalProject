@@ -29,11 +29,16 @@ We imported our project to heroku through github and then look under the deploy 
 
 ## How to run:
 Go to this link: https://pyflask-sudoku-solver.herokuapp.com/
-The code is live and you will be able to access the sudoku solver and all its features. Keep in mind that the solve button may take a couple seconds to run the code depending on the difficulty of the puzzle.
+The code is live and you will be able to access the sudoku solver and all its features. Keep in mind that the solve button may take a couple seconds to run the code depending on the difficulty of the puzzle. On the top right of the page the sentence "Please wait while your puzzle solves..." displays to indicate that the code is still solving. when the puzzle is completely solved the message "puzzle solved!" will flash to show the code is done running.
 
-We found that at times the live site was very slow so the following is instructons on how to locally run the application.
 
-step 1: download flask into the CP476-FinalProject (aka entire project folder)
+
+IMPORTANT!!!:
+Heroku was unable to deploy our api so it is manditory to follow step 2 in order to run locally and through the web link.
+
+To run locally:
+
+Step 1: Download flask into the CP476-FinalProject (aka entire project folder)
 1. Open cmd
 2. cd into the CP476-FinalProject or whatever it is named
 3. Type in cmd: 'py -m venv env' This like will create a env folder in the project
@@ -42,6 +47,13 @@ step 1: download flask into the CP476-FinalProject (aka entire project folder)
 6. Select flask app, type in cmd: 'set FLASK_APP=app.py'
 7. Change environment to development, type in cmd: 'set FLASK_ENV=development'
 8. To run the code, type in cmd: 'flask run'
+9. Remember in VScode to change the python.exe interpreter location to inside the env folder.
+
+Step 2: Run express API
+1. Open cmd
+2. cd into the api folder, type in cmd: 'cd C:\cp476\CP476-FinalProject\static\api'
+3. type in cmd: 'npm install', To install node modules
+4. type in cmd: 'npm start'
 
 
 ## External resources: 
