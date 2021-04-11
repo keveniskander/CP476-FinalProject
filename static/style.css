@@ -246,14 +246,11 @@ input {
 .alert {
   /* padding: 20px; */
   background-color: #f44336;
-  float:left;
-  align-self: center;
+  
+
   color:white;
   font-size: larger;
-  
- 
-  width:275px;
-  height:43px;
+
   
   
 }

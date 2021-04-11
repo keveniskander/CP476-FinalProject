@@ -177,6 +177,8 @@
         <!-- <input type="button" value="test" onclick="getDB()" > -->
         <!-- <input type="button" value="isvalid" onclick="isvalid()" > -->
         <!-- <div class="loader"></div> -->
+        <div class="alert"><h1 id="Hello"></h1></div>
+        
         <div id="screen"class="alert">
             <span  id ="loading"></span> 
             
@@ -353,6 +355,8 @@ window.onload = function WindowLoad(event) {
     getDB();
     var x = document.getElementById("screen");
     x.style.display = "none";
+    var x = document.getElementById("Hello");
+    x.style.display = "none";
 }
 
 
@@ -498,10 +502,13 @@ function callAPI(){
     var arr=checkNum();
 
     var input_arr=[]
-    var x = document.getElementById("screen");
+    // var x = document.getElementById("screen");
+    // x.style.display = "block";
+    var x = document.getElementById("Hello");
+    document.getElementById("Hello").innerHTML="your puzzle is solving"
     x.style.display = "block";
-    $('#loading').show();
-    $('#screen').show();
+    // $('#loading').show();
+    // $('#screen').show();
  
 
     document.getElementById("loading").innerHTML="Please wait while your puzzle solves...";
@@ -541,10 +548,13 @@ function callAPI(){
         
         
     }
-    document.getElementById("loading").innerHTML="puzzle solved!";
+    // document.getElementById("loading").innerHTML="puzzle solved!";
+    document.getElementById("Hello").innerHTML="puzzle solved!"
     setTimeout(function(){
-    $('#loading').hide()
-    $('#screen').hide()
+    // $('#loading').hide()
+    // $('#screen').hide()
+    var x = document.getElementById("Hello");
+    x.style.display = "none";
 }, 3000) // time in millisecond for as long as you like
     }).catch(err => {
         console.log(err)
