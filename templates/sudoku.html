@@ -179,10 +179,10 @@
         <!-- <div class="loader"></div> -->
         <div class="alert"><h1 id="Hello"></h1></div>
         
-        <div id="screen"class="alert">
+        <!-- <div id="screen"class="alert">
             <span  id ="loading"></span> 
             
-          </div>
+          </div> -->
 
     </div>
  
@@ -353,8 +353,8 @@ window.onload = function WindowLoad(event) {
         
     }
     getDB();
-    var x = document.getElementById("screen");
-    x.style.display = "none";
+    // var x = document.getElementById("screen");
+    // x.style.display = "none";
     var x = document.getElementById("Hello");
     x.style.display = "none";
 }
@@ -511,7 +511,7 @@ function callAPI(){
     // $('#screen').show();
  
 
-    document.getElementById("loading").innerHTML="Please wait while your puzzle solves...";
+    // document.getElementById("loading").innerHTML="Please wait while your puzzle solves...";
 
     for (var i=0;i<arr.length;i++){
         if (arr[i]==0){
